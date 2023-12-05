@@ -1,0 +1,39 @@
+include <stdio.h>
+
+#include <stdio.h>
+#include <mpi.h>
+
+int main(int argc, char *argv[]) {
+
+int rank, size:
+
+MPI_Init(&argc, &argv):
+
+HPI_Comm_rank (MPI COMM WORLD, &rank);
+
+MPI_Comm_size (NPI COMM WORLD, &size);
+
+if (rank == 0) {
+
+int message = 42;
+
+MPI_Send(&message, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
+
+printf("Process %d sent message %d to process 1\n", rank, message);
+
+} else if (rank == 1) {
+
+int received message;
+
+MPI Recv(&received_message, 1, MPI INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+printf("Process %d received message %d from process 0\n", rank, received_message);
+
+}
+
+MPI Finalize();
+
+return 0;
+
+}
+//mpicc a.c -o a
+//mpiexec -n 2 ./a
